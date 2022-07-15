@@ -3,13 +3,13 @@ const checkValue = (value, min, max) => {
   const validValues = /^[1-9]?\d*$/
 
   if (!validValues.test(value)) {
-    return
+    return ''
   }
 
   const newText = parseInt(value, 10)
 
   if (Number.isNaN(newText)) {
-    return 0
+    return ''
   }
 
   if (newText > max) {
