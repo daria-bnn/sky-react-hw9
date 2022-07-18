@@ -23,6 +23,12 @@ const MinMaxCounter = ({ id, min, max, current, setQuatinty }) => {
     setQuatinty(id, checkValue(valueInput, min, max))
   }
 
+  const handleUpdateCurrentForKey = (event) => {
+    if (event.code === 'Enter') {
+      handleUpdateCurrent(event)
+    }
+  }
+
   const increase = () => {
     if (current >= max || typeof current !== 'number') return
 
@@ -47,11 +53,7 @@ const MinMaxCounter = ({ id, min, max, current, setQuatinty }) => {
         onChange={validate}
         value={valueInput}
         onBlur={handleUpdateCurrent}
-        onKeyDown={(event) => {
-          if (event.code === 'Enter') {
-            handleUpdateCurrent(event)
-          }
-        }}
+        onKeyDown={handleUpdateCurrentForKey}
       />
       <button type="button" onClick={increase}>
         +
