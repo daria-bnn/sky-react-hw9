@@ -2,8 +2,11 @@ import Error from './Error/Error'
 import useGetInput from './hooks/useGetInput'
 
 const LoginPass = () => {
-  const email = useGetInput('', { isEmpty: true, isValidEmail: true })
-  const password = useGetInput('', { isEmpty: true, isLength: 6 })
+  const RULES_EMAIL = { required: true, isValidEmail: true }
+  const RULES_PASSWORD = { required: true, minLength: 6 }
+
+  const email = useGetInput('', RULES_EMAIL)
+  const password = useGetInput('', RULES_PASSWORD)
 
   return (
     <div>

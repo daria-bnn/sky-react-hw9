@@ -9,7 +9,7 @@ const useValidInput = (initValue, rules, dirty) => {
   useEffect(() => {
     if (!dirty) return
 
-    if (!initValue && rules.isEmpty) {
+    if (!initValue && rules.required) {
       setError('Поле не может быть пустым')
       return
     }
@@ -19,8 +19,8 @@ const useValidInput = (initValue, rules, dirty) => {
       return
     }
 
-    if (rules.isLength && initValue.length < rules.isLength) {
-      setError(`Поле должно содержать более ${rules.isLength} символов`)
+    if (rules.minLength && initValue.length < rules.minLength) {
+      setError(`Поле должно содержать более ${rules.minLength} символов`)
       return
     }
 
