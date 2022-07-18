@@ -1,9 +1,21 @@
+import { useState } from 'react'
 import dataArticles from './data/dataArticles'
 
-const { useState } = require('react')
+const dataOptions = [
+  { value: '', textHeader: 'Выберите название статьи' },
+  {
+    value: 'catsMeow',
+    textHeader: 'Как мурчат котики',
+  },
+  {
+    value: 'catsPaws',
+    textHeader: 'Почему котики мнут лапками',
+  },
+  { value: 'catsBox', textHeader: 'Почему котики любят коробки' },
+]
 
 const SelectArticle = () => {
-  const [header, setHeader] = useState('')
+  const [header, setHeader] = useState(null)
 
   const handleFieldChange = (event) => {
     const { target } = event
@@ -22,14 +34,15 @@ const SelectArticle = () => {
             value={header}
             onChange={handleFieldChange}
           >
-            <option value="">Выберите название статьи</option>
-            <option value="catsMeow">Как мурчат котики</option>
-            <option value="catsPaws">Почему котики мнут лапками</option>
-            <option value="catsBox">Почему котики любят коробки</option>
+            {dataOptions.map((el) => (
+              <option key={el.value} value={el.value}>
+                {el.textHeader}
+              </option>
+            ))}
           </select>
         </label>
       </form>
-      {header && <p>{dataArticles[`${header}`]}</p>}
+      {header && <p>{dataArticles[header]}</p>}
     </div>
   )
 }
