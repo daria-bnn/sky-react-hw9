@@ -8,7 +8,7 @@ const BasketBooks = () => {
   const [books, setBooks] = useState(booksStub())
 
   const deleteBook = (id) => {
-    setBooks(books.filter((book) => book.id !== id))
+    setBooks((prevState) => prevState.filter((book) => book.id !== id))
   }
 
   const setQuatinty = (id, quantity) => {

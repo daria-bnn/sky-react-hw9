@@ -15,7 +15,7 @@ const dataOptions = [
 ]
 
 const SelectArticle = () => {
-  const [header, setHeader] = useState(null)
+  const [header, setHeader] = useState('')
 
   const handleFieldChange = (event) => {
     const { target } = event
